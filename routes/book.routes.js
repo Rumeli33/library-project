@@ -1,14 +1,20 @@
 const Book = require("../models/Book.model");
+const Author = require("../models/Author.model");
 const express = require("express");
 const { route } = require("./index.routes");
 const router = express.Router();
 
+
+
 /* display books from database  */
 router.get("/books", (req, res, next) => {
   Book.find()
+  .populate("author")
     .then((booksFromDb) => {
-      
+     
       res.render("books/books-list", { books: booksFromDb });
+
+
     })
     .catch((err) => {
       console.log("error getting details from the db", err);
@@ -20,8 +26,9 @@ router.get("/books", (req, res, next) => {
 router.get("/books/:bookId", (req, res, next) => {
   const id = req.params.bookId;
   Book.findById(id)
-    .then((bookDetails) => {
-     
+  .populate("author")
+  .then((bookDetails) => {
+    
       res.render("books/book-details", bookDetails);
     })
     .catch((err) => {
