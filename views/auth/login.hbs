@@ -1,0 +1,21 @@
+<div id ="form">
+    <h2>Log In</h2>
+
+{{#if errorMessage}}
+    <p class ="error"> {{errorMessage}}</p>
+    {{/if}}
+
+    <form action="/login" method ="post">
+    
+        <label>
+            <input type="email" name ="email" placeholder="rockstar@ironhack.com" required />
+        </label>
+
+        <label>
+            <input type="password" name ="password" placeholder="******" required />
+        </label>
+    
+    <button type="submit"> LOGIN</button>
+
+    </form>
+    </div>

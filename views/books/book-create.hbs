@@ -6,10 +6,16 @@
     <input type="text" name ="title" />
 </label>
 
-<label>
-    Author:
-    <input type="text" name ="author" />
-</label>
+<label> Author:
+        {{!-- <input type="text" name="author" /> --}}
+
+        <select name="author">
+            {{#each authorsFromDb}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+
+    </label>>
 
 <label>
     Description:
